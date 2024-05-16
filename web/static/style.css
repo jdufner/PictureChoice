@@ -1,34 +1,36 @@
-.container-vertical {
+body {
+  margin: 0; /* Remove default body margin */
+  overflow: hidden; /* Prevent body overflow */
+}
+
+.container {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 0.5em;
+  grid-gap: 10px; /* Adjust gap between images as desired */
+  height: 100vh; /* Set container height to 100% viewport height */
 }
 
-.box-vertical {
-  height: 48vh;
-  margin-left: auto;
-  margin-right: auto;
+.box {
+  overflow: hidden; /* Prevent images from overflowing container */
 }
 
-.box-vertical img {
-  /*width: 100%;*/
-  height: 100%;
+.box img {
+  object-fit: contain; /* Maintain aspect ratio and fit within container */
+  width: 100%; /* Images fill container width */
+  height: 100%; /* Images fill container height */
 }
 
-.container-horizontal {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  grid-gap: 0.5em;
+/* Media Queries for Responsive Layout */
+
+@media screen and (orientation: portrait) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
 }
 
-.box-horizontal {
-  /*height: 100vh;*/
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.box-horizontal img {
-  width: 100%;
-  height: 100%;
+@media screen and (orientation: landscape) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+  }
 }
