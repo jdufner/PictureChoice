@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <!--h1>Hello World!</h1-->
+        <div class="container-vertical">
+            <div class="box-vertical">
+                <img src="/static/images/Pfau.jpg"/>
+            </div>
+            <div class="box-vertical">
+                <img src="{{url_for('static', filename='images/Chilis.jpg')}}"/>
+            </div>
+        </div>
+        <script>
+            function setClasses(width, height) {
+              if (width > height) {
+                replaceClasses('container-vertical', 'container-horizontal')
+                replaceClasses('box-vertical', 'box-horizontal')
+              } else {
+                replaceClasses('container-horizontal', 'container-vertical')
+                replaceClasses('box-horizontal', 'box-vertical')
+              }
+            }
+
+            function replaceClasses(oldClass, newClass) {
+              for (const element of document.getElementsByClassName(oldClass)) {
+                element.classList.remove(oldClass)
+                element.classList.add(newClass)
+              }
+            }
+
+            window.addEventListener("resize", function(event) {
+                //console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
+                setClasses(document.body.clientWidth, document.body.clientHeight)
+            })
+        </script>
+    </body>
+</html>

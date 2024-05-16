@@ -1,0 +1,34 @@
+.container-vertical {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 0.5em;
+}
+
+.box-vertical {
+  height: 48vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box-vertical img {
+  /*width: 100%;*/
+  height: 100%;
+}
+
+.container-horizontal {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-gap: 0.5em;
+}
+
+.box-horizontal {
+  /*height: 100vh;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box-horizontal img {
+  width: 100%;
+  height: 100%;
+}

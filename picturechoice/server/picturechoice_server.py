@@ -1,6 +1,7 @@
 import argparse
 from argparse import Namespace
 from datetime import datetime
+from flask import Flask, render_template, url_for, request, app
 import json
 import logging
 import os
@@ -9,9 +10,6 @@ import os
 class PictureChoiceServer:
     def __init__(self, config: dict):
         self.config = config
-
-    def run(self):
-        pass
 
 
 def __parse_arguments() -> Namespace:
@@ -28,6 +26,16 @@ def __load_config() -> dict:
     return conf
 
 
+app: Flask = Flask(__name__,
+                   static_folder='../../web/static',
+                   template_folder='../../web/templates')
+
+
+@app.route('/')
+def home():
+    return render_template('/index.html')
+
+
 if __name__ == '__main__':
     config: dict = __load_config()
     now: datetime = datetime.now()
@@ -39,4 +47,4 @@ if __name__ == '__main__':
                                '%(module)s - %(funcName)s - %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S',
                         level=logging.getLevelNamesMapping()[config["logging"]["level"].upper()])
-    PictureChoiceServer(config).run()
+    app.run(debug=True)

@@ -1,0 +1,7 @@
+{
+  "logging": {
+    "path": "./logs",
+    "_level": ["debug", "info", "warning", "error", "critical"],
+    "level": "info"
+  }
+}
