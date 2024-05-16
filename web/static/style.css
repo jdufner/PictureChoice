@@ -11,6 +11,10 @@ body {
 
 .box {
   overflow: hidden; /* Prevent images from overflowing container */
+  /* Add display: flex; to center forms within boxes */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .box img {
