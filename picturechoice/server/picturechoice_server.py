@@ -33,7 +33,24 @@ app: Flask = Flask(__name__,
 
 @app.route('/')
 def home():
-    return render_template('/index.html')
+    timestamp = datetime.now().isoformat()
+    return render_template('/index.html',
+                           img1='/static/images/Pfau.jpg',
+                           img2='/static/images/Chilis.jpg',
+                           timestamp=timestamp)
+
+
+@app.route('/submit', methods=['POST'])
+def on_click():
+    request_timestamp: str = request.form.get('timestamp')
+    request_first: str = request.form['first']
+    request_second: str = request.form['second']
+    logging.info(f'timestamp = {request_timestamp}, first = {request_first}, second = {request_second}')
+    timestamp = datetime.now().isoformat()
+    return render_template('/index.html',
+                           img1='/static/images/Pfau.jpg',
+                           img2='/static/images/Chilis.jpg',
+                           timestamp=timestamp)
 
 
 if __name__ == '__main__':

@@ -7,12 +7,22 @@
     </head>
     <body>
         <div class="container">
-            <div class="box">
-                <img src="/static/images/Pfau.jpg" alt="Image 1">
-            </div>
-            <div class="box">
-                <img src="/static/images/Chilis.jpg" alt="Image 2">
-            </div>
+            <form action="/submit" method="post">
+                <div class="box">
+                    <img src="{{ img1 }}" alt="Image 1" onclick="submit();">
+                    <input type="hidden" name="first" value="{{ img1 }}" readonly>
+                    <input type="hidden" name="second" value="{{ img2 }}" readonly>
+                    <input type="hidden" name="timestamp" value="{{ timestamp }}" readonly>
+                </div>
+            </form>
+            <form action="/submit" method="post">
+                <div class="box">
+                    <img src="{{ img2 }}" alt="Image 2" onclick="submit();">
+                    <input type="hidden" name="first" value="{{ img2 }}" readonly>
+                    <input type="hidden" name="second" value="{{ img1 }}" readonly>
+                    <input type="hidden" name="timestamp" value="{{ timestamp }}" readonly>
+                </div>
+            </form>
         </div>
         <script src="/static/script.js"></script>
     </body>
